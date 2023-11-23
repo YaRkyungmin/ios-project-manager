@@ -14,7 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        let appManager = AppManager()
+        
+        appManager.start()
+        
         window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = appManager.mainViewController
         
         window?.makeKeyAndVisible()
     }
