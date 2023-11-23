@@ -15,6 +15,7 @@ final class PlanCollectionViewListCell: UICollectionViewListCell {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
+        stackView.spacing = 2
         
         return stackView
     }()
@@ -23,7 +24,7 @@ final class PlanCollectionViewListCell: UICollectionViewListCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textColor = .black
         label.text = "제목"
         
@@ -34,7 +35,7 @@ final class PlanCollectionViewListCell: UICollectionViewListCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .systemGray
         label.text = "내용"
         
@@ -45,7 +46,7 @@ final class PlanCollectionViewListCell: UICollectionViewListCell {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.textColor = .black
         label.text = "2022.2.2"
         
@@ -55,12 +56,25 @@ final class PlanCollectionViewListCell: UICollectionViewListCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupComponents()
         configureUI()
-        setupConstraints()        
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - SetupComponents
+extension PlanCollectionViewListCell {
+    private func setupComponents() {
+        setupContentView()
+    }
+    
+    private func setupContentView() {
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.systemGray5.cgColor
     }
 }
 
@@ -90,10 +104,10 @@ extension PlanCollectionViewListCell {
     
     private func setupTotalPlanStackViewConstraint() {
         NSLayoutConstraint.activate([
-            totalPlanStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            totalPlanStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            totalPlanStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            totalPlanStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            totalPlanStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            totalPlanStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            totalPlanStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
+            totalPlanStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
 }

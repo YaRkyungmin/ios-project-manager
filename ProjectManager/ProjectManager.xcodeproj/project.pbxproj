@@ -17,6 +17,7 @@
 		CD2BC82F2AEA6A2A00362166 /* PlanCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC82E2AEA6A2A00362166 /* PlanCollectionViewListCell.swift */; };
 		CD2BC8322AEA6ACE00362166 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC8312AEA6ACE00362166 /* AppManager.swift */; };
 		CD2BC8352AEC026700362166 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC8342AEC026700362166 /* Plan.swift */; };
+		CD5BB0E62B0F620D006A4C56 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BB0E52B0F620D006A4C56 /* TitleHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CD2BC82E2AEA6A2A00362166 /* PlanCollectionViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewListCell.swift; sourceTree = "<group>"; };
 		CD2BC8312AEA6ACE00362166 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		CD2BC8342AEC026700362166 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		CD5BB0E52B0F620D006A4C56 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				C7431F1025F51E1E0094C4CF /* LaunchScreen.storyboard */,
 				CD2BC82E2AEA6A2A00362166 /* PlanCollectionViewListCell.swift */,
+				CD5BB0E52B0F620D006A4C56 /* TitleHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				C7431F0825F51E1D0094C4CF /* SceneDelegate.swift in Sources */,
 				CD2BC8322AEA6ACE00362166 /* AppManager.swift in Sources */,
 				CD2BC82F2AEA6A2A00362166 /* PlanCollectionViewListCell.swift in Sources */,
+				CD5BB0E62B0F620D006A4C56 /* TitleHeaderView.swift in Sources */,
 				CD2BC82B2AEA68F000362166 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
