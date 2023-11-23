@@ -24,8 +24,8 @@ final class PlanCollectionViewController: UIViewController {
         configureUI()
         setupConstraints()
         configureDataSource()
+        configureDataSourceHeader()
         applySnapshot()
-        collectionView.backgroundColor = .black
     }
 }
 
@@ -61,11 +61,21 @@ extension PlanCollectionViewController {
 // MARK: - CollectionView DataSource
 extension PlanCollectionViewController {
     private func configureDataSource() {
-        let registration = UICollectionView.CellRegistration<PlanCollectionViewListCell, Plan> { cell, _, plan in
-            print("")
+        let cellRegistration = UICollectionView.CellRegistration<PlanCollectionViewListCell, Plan> { cell, _, plan in
+            print("cell")
         }
         planDataSource = UICollectionViewDiffableDataSource<Section, Plan>(collectionView: collectionView) { collectionView, indexPath, plan in
-            return collectionView.dequeueConfiguredReusableCell(using: registration, for: indexPath, item: plan)
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: plan)
+        }
+    }
+    
+    private func configureDataSourceHeader() {
+        let headerRegistration = UICollectionView.SupplementaryRegistration<TitleHeaderView>(elementKind: ElementKind.sectionHeader) { _, _, _ in
+            print("header")
+        }
+
+        planDataSource?.supplementaryViewProvider = { collectionView, _, indexPath in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
     }
     
@@ -89,12 +99,31 @@ extension PlanCollectionViewController {
 
 // MARK: - CollectionView Layout
 extension PlanCollectionViewController {
-    private func listLayout() -> UICollectionViewLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.backgroundColor = .systemGray6
-        configuration.headerMode = .none
+    private func listLayout() -> UICollectionViewCompositionalLayout {
+        let layout = UICollectionViewCompositionalLayout { _, layoutEnvironment in
+            
+            var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
+            configuration.headerMode = .supplementary
+            configuration.backgroundColor = .systemGray6
+            
+            let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 0, bottom: 0, trailing: 0)
+            section.interGroupSpacing = 7
+            let headerSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(80))
+            let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: ElementKind.sectionHeader,
+                alignment: .top)
+            
+            headerSupplementary.pinToVisibleBounds = true
+            headerSupplementary.zIndex = 110
+            section.boundarySupplementaryItems = [headerSupplementary]
+            return section
+        }
         
-        return UICollectionViewCompositionalLayout.list(using: configuration)
+        return layout
     }
     
     private func setUpSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
@@ -122,5 +151,12 @@ extension PlanCollectionViewController: UICollectionViewDelegate {
 extension PlanCollectionViewController {
     private enum Section {
         case main
+    }
+}
+
+// MARK: - CollectionView ElementKind
+extension PlanCollectionViewController {
+    private enum ElementKind {
+        static let sectionHeader = "section-header-element-kind"
     }
 }
