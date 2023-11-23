@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Plan: Hashable {
+    let identifier: UUID
+    let title: String
+    let content: String
+    let date: String
+}
