@@ -104,6 +104,7 @@ extension PlanCollectionViewController {
             
             var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
             configuration.headerMode = .supplementary
+            configuration.trailingSwipeActionsConfigurationProvider = self.makeSwipeActions
             configuration.backgroundColor = .systemGray6
             
             let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
@@ -126,16 +127,12 @@ extension PlanCollectionViewController {
         return layout
     }
     
-    private func setUpSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        listConfiguration.headerMode = .none
-        return NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: layoutEnvironment)
-    }
-    
-    private func setUpHeaderSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        listConfiguration.headerMode = .supplementary
-        return NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: layoutEnvironment)
+    private func makeSwipeActions(for indexPath: IndexPath?) -> UISwipeActionsConfiguration? {
+        let deleteActionTitle = NSLocalizedString("Delete", comment: "Delete action title")
+        let deleteAction = UIContextualAction(style: .destructive, title: deleteActionTitle) {_,_,_ in
+            print("\(indexPath!.item): remove")
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
