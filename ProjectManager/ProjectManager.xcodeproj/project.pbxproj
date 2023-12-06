@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		C7431F0825F51E1D0094C4CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7431F0725F51E1D0094C4CF /* SceneDelegate.swift */; };
 		C7431F0F25F51E1E0094C4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7431F0E25F51E1E0094C4CF /* Assets.xcassets */; };
 		C7431F1225F51E1E0094C4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7431F1025F51E1E0094C4CF /* LaunchScreen.storyboard */; };
-		CD2BC8252AEA4D0D00362166 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CD2BC8242AEA4D0D00362166 /* .swiftlint.yml */; };
 		CD2BC82B2AEA68F000362166 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC82A2AEA68F000362166 /* MainViewController.swift */; };
 		CD2BC82D2AEA69AA00362166 /* PlanCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC82C2AEA69AA00362166 /* PlanCollectionViewController.swift */; };
 		CD2BC82F2AEA6A2A00362166 /* PlanCollectionViewListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC82E2AEA6A2A00362166 /* PlanCollectionViewListCell.swift */; };
@@ -28,7 +27,6 @@
 		C7431F0E25F51E1E0094C4CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7431F1125F51E1E0094C4CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7431F1325F51E1E0094C4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD2BC8242AEA4D0D00362166 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CD2BC82A2AEA68F000362166 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD2BC82C2AEA69AA00362166 /* PlanCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewController.swift; sourceTree = "<group>"; };
 		CD2BC82E2AEA6A2A00362166 /* PlanCollectionViewListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewListCell.swift; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 		C7431F0425F51E1D0094C4CF /* ProjectManager */ = {
 			isa = PBXGroup;
 			children = (
-				CD2BC8242AEA4D0D00362166 /* .swiftlint.yml */,
 				C7431F1325F51E1E0094C4CF /* Info.plist */,
 				CD2BC81A2AEA3F3400362166 /* App */,
 				CD2BC81C2AEA431100362166 /* Resource */,
@@ -178,7 +175,6 @@
 			);
 			mainGroup = C7431EF925F51E1D0094C4CF;
 			packageReferences = (
-				CD2BC81F2AEA496E00362166 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = C7431F0325F51E1D0094C4CF /* Products */;
 			projectDirPath = "";
@@ -194,7 +190,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD2BC8252AEA4D0D00362166 /* .swiftlint.yml in Resources */,
 				C7431F1225F51E1E0094C4CF /* LaunchScreen.storyboard in Resources */,
 				C7431F0F25F51E1E0094C4CF /* Assets.xcassets in Resources */,
 			);
