@@ -18,6 +18,7 @@
 		CD2BC8322AEA6ACE00362166 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC8312AEA6ACE00362166 /* AppManager.swift */; };
 		CD2BC8352AEC026700362166 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BC8342AEC026700362166 /* Plan.swift */; };
 		CD5BB0E62B0F620D006A4C56 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5BB0E52B0F620D006A4C56 /* TitleHeaderView.swift */; };
+		CDE201292B16E29000847008 /* DetailPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE201282B16E29000847008 /* DetailPlanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CD2BC8312AEA6ACE00362166 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		CD2BC8342AEC026700362166 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		CD5BB0E52B0F620D006A4C56 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		CDE201282B16E29000847008 /* DetailPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			children = (
 				CD2BC82A2AEA68F000362166 /* MainViewController.swift */,
 				CD2BC82C2AEA69AA00362166 /* PlanCollectionViewController.swift */,
+				CDE201282B16E29000847008 /* DetailPlanViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				C7431F0825F51E1D0094C4CF /* SceneDelegate.swift in Sources */,
 				CD2BC8322AEA6ACE00362166 /* AppManager.swift in Sources */,
 				CD2BC82F2AEA6A2A00362166 /* PlanCollectionViewListCell.swift in Sources */,
+				CDE201292B16E29000847008 /* DetailPlanViewController.swift in Sources */,
 				CD5BB0E62B0F620D006A4C56 /* TitleHeaderView.swift in Sources */,
 				CD2BC82B2AEA68F000362166 /* MainViewController.swift in Sources */,
 			);
