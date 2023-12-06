@@ -155,6 +155,9 @@ extension MainViewController {
 extension MainViewController {
     @objc private func didTapPlusButton() {
         print("didTapPlusButton")
+        let test = DetailPlanViewController()
+        test.modalPresentationStyle = .pageSheet
+        present(test, animated: false, completion: nil)
     }
     
     @objc private func didTapHistoryButton() {
