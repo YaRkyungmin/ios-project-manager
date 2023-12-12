@@ -8,6 +8,14 @@
 import UIKit
 
 final class PlanCollectionViewController: UIViewController {
+    private lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
+        let gestureRecognizer = UILongPressGestureRecognizer()
+        gestureRecognizer.minimumPressDuration = 1
+        gestureRecognizer.addTarget(self, action: #selector(didTapLongPress(_:)))
+        
+        return gestureRecognizer
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: listLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +30,7 @@ final class PlanCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        setupComponent()
         setupConstraints()
         configureDataSource()
         configureDataSourceHeader()
@@ -37,6 +46,17 @@ extension PlanCollectionViewController {
     
     private func configureView() {
         view.addSubview(collectionView)
+    }
+}
+
+// MARK: - SetupComponent
+extension PlanCollectionViewController {
+    private func setupComponent() {
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        collectionView.addGestureRecognizer(longPressGestureRecognizer)
     }
 }
 
@@ -87,7 +107,16 @@ extension PlanCollectionViewController {
         let plan1 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
         let plan2 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
         let plan3 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
-        let dummyPlanList = [plan1, plan2, plan3]
+        let plan4 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan5 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan6 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan7 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan8 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan9 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan10 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        let plan11 = Plan(identifier: UUID(), title: "제목1", content: "", date: "")
+        
+        let dummyPlanList = [plan1, plan2, plan3, plan4, plan5, plan6, plan7, plan8, plan9, plan10, plan11]
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Plan>()
         
@@ -155,5 +184,34 @@ extension PlanCollectionViewController {
 extension PlanCollectionViewController {
     private enum ElementKind {
         static let sectionHeader = "section-header-element-kind"
+    }
+}
+
+// MARK: - Gesture Action
+extension PlanCollectionViewController {
+    @objc private func didTapLongPress(_ sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else {
+            return
+        }
+        
+        let touchPoint = sender.location(in: sender.view)
+        
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint) else {
+            return
+        }
+        
+        guard let theAttributes = collectionView.layoutAttributesForItem(at: indexPath) else {
+            return
+        }
+        
+        let cellFrame = collectionView.convert(theAttributes.frame, to: collectionView.superview)
+        let popoverViewController = PopoverViewController()
+        popoverViewController.modalPresentationStyle = .popover
+        popoverViewController.preferredContentSize = CGSize(width: view.frame.width * 0.7, height: view.frame.height * 0.15)
+        popoverViewController.popoverPresentationController?.sourceView = view
+        popoverViewController.popoverPresentationController?.sourceRect = CGRect(x: cellFrame.maxX, y: cellFrame.midY, width: 0, height: 0)
+        popoverViewController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+
+        self.view.window?.rootViewController?.present(popoverViewController, animated: false)
     }
 }
