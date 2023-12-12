@@ -189,5 +189,14 @@ extension MainViewController {
     }
     
     @objc private func didTapHistoryButton(_ sender: UIButton) {
+        let historyViewController = HistoryViewController()
+        historyViewController.modalPresentationStyle = .popover
+        historyViewController.preferredContentSize = CGSize(width: view.frame.width * 0.45, height: view.frame.height * 0.55)
+        let buttonFrame = sender.frame
+        historyViewController.popoverPresentationController?.sourceView = view
+        historyViewController.popoverPresentationController?.sourceRect = CGRect(x: buttonFrame.minX, y: navigationBar.frame.maxY, width: 0, height: 0)
+        historyViewController.popoverPresentationController?.permittedArrowDirections = [.up]
+
+        present(historyViewController, animated: false)
     }
 }
