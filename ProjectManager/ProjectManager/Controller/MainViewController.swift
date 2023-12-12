@@ -19,6 +19,40 @@ final class MainViewController: UIViewController {
         return navigationBar
     }()
     
+    private lazy var navigationBarLeftButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("History", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.backgroundColor = .systemBackground
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapHistoryButton(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let navigationBarTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Project Manager"
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var navigationBarRightButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("+", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        button.backgroundColor = .systemBackground
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private let planStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,6 +100,7 @@ extension MainViewController {
     private func configureUI() {
         configureView()
         configurePlanStackView()
+        configureNavigationbar()
     }
     
     private func configureView() {
@@ -79,35 +114,22 @@ extension MainViewController {
         planStackView.addArrangedSubview(doingViewController.view)
         planStackView.addArrangedSubview(doneViewController.view)
     }
+    
+    private func configureNavigationbar() {
+        navigationBar.addSubview(navigationBarLeftButton)
+        navigationBar.addSubview(navigationBarTitleLabel)
+        navigationBar.addSubview(navigationBarRightButton)
+    }
 }
 
 // MARK: - SetupComponents
 extension MainViewController {
     private func setupComponents() {
         setupView()
-        setupNavigationBar()
     }
     
     private func setupView() {
         view.backgroundColor = .white
-    }
-    
-    private func setupNavigationBar() {
-        let navigationItem = UINavigationItem(title: "Project Manager")
-        let historyButton = UIBarButtonItem(
-            title: "History",
-            style: .plain,
-            target: self,
-            action: #selector(didTapHistoryButton))
-        let plusButton = UIBarButtonItem(
-            title: "+",
-            style: .plain,
-            target: self,
-            action: #selector(didTapPlusButton))
-        navigationItem.leftBarButtonItem = historyButton
-        navigationItem.rightBarButtonItem = plusButton
-        
-        navigationBar.setItems([navigationItem], animated: true)
     }
 }
 
@@ -125,7 +147,13 @@ extension MainViewController {
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: safeArea.topAnchor),
             navigationBar.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+            navigationBar.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            navigationBarLeftButton.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
+            navigationBarLeftButton.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor, constant: 15),
+            navigationBarTitleLabel.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor),
+            navigationBarTitleLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
+            navigationBarRightButton.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
+            navigationBarRightButton.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -15)
         ])
     }
     
@@ -160,7 +188,6 @@ extension MainViewController {
         present(test, animated: false, completion: nil)
     }
     
-    @objc private func didTapHistoryButton() {
-        print("didTapHistoryButton")
+    @objc private func didTapHistoryButton(_ sender: UIButton) {
     }
 }
